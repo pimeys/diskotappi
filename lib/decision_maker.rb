@@ -1,7 +1,10 @@
 require 'cinch'
 
+require './lib/bot_helper'
+
 class DecisionMaker
   include Cinch::Plugin
+  include BotHelper
 
   listen_to :channel
 
@@ -29,17 +32,5 @@ class DecisionMaker
     end
 
     message.reply("#{message.user.nick}: #{result}")
-  end
-
-  def bot_name_regexp(nick)
-    /^#{nick}[:,]*/
-  end
-
-  def bot_addressed?(message)
-    !(message.message =~ bot_name_regexp(message.bot.nick)).nil?
-  end
-
-  def addressed_text(message)
-    message.message.split(bot_name_regexp(message.bot.nick)).last.strip
   end
 end
