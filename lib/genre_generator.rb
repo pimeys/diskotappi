@@ -20,9 +20,10 @@ class GenreGenerator
     mains       = main_genres.select { |genre| !given_genre.include?(genre) }
     subs        = subgenres.select   { |genre| !given_genre.include?(genre) }
     main_dice   = genre_rand(0, mains.size - 1)
-    sub_dice    = genre_rand(0, subs.size - 1)
+    sub_dice1   = genre_rand(0, subs.size - 1)
+    sub_dice2   = genre_rand(0, subs.size - 1)
 
-    generated   = [mains[main_dice], subs[sub_dice]]
+    generated   = [subs[sub_dice1], subs[sub_dice2], mains[main_dice]]
     replace_at  = genre_rand(0, generated.join(' ').split.size - 1)
 
     generated.insert(replace_at, given_genre.join(' '))
