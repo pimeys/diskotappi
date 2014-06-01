@@ -1,0 +1,6 @@
+adapter: 'mysql2'
+username: 'root'
+password: ''
+hostname: 'localhost'
+port: 3006
+schema: 'biletappi'

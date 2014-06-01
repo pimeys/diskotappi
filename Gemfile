@@ -5,3 +5,5 @@ gem 'rake', '~> 10.0.0'
 
 gem 'cinch'
 gem 'pry'
+gem 'sequel'
+gem 'mysql2'

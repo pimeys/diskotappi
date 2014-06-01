@@ -4,8 +4,10 @@ require 'open-uri'
 
 class OembedTitleFetcher
   def listen(m)
+    message = UrlGrabber.sanitize(m.message)
+
     begin
-      uris = URI.extract(m.message).select do |uri|
+      uris = URI.extract(message).select do |uri|
         allowed_hosts.include?(URI.parse(uri).host)
       end
     rescue URI::InvalidURIError

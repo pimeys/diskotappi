@@ -5,11 +5,13 @@ GEM
     cinch (2.1.0)
     coderay (1.1.0)
     method_source (0.8.2)
+    mysql2 (0.3.16)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
     rake (10.0.4)
+    sequel (4.10.0)
     slop (3.5.0)
 
 PLATFORMS
@@ -17,5 +19,7 @@ PLATFORMS
 
 DEPENDENCIES
   cinch
+  mysql2
   pry
   rake (~> 10.0.0)
+  sequel
