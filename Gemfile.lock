@@ -4,6 +4,7 @@ GEM
   specs:
     cinch (2.1.0)
     coderay (1.1.0)
+    curb (0.8.5)
     method_source (0.8.2)
     mysql2 (0.3.16)
     pry (0.9.12.6)
@@ -19,6 +20,7 @@ PLATFORMS
 
 DEPENDENCIES
   cinch
+  curb
   mysql2
   pry
   rake (~> 10.0.0)
