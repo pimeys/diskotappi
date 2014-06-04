@@ -7,6 +7,7 @@ require './lib/database'
 
 class UrlLog
   include Cinch::Plugin
+  include BotHelper
 
   listen_to :channel
 
@@ -22,7 +23,7 @@ class UrlLog
       end
     end
 
-    return if uris.empty?
+    return if uris.nil? || uris.empty?
 
     found      = Database.connection[:urllog].where(url: uris, channel: m.channel.name).exclude(nick: m.user.nick).all
     found_uris = found.map { |uri| uri[:url] }.to_set
