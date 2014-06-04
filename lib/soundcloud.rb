@@ -2,7 +2,7 @@ require 'cinch'
 
 require './lib/oembed_title_fetcher'
 
-class SoundCloud < OembedTitleFetcher
+class Soundcloud < OembedTitleFetcher
   include Cinch::Plugin
 
   listen_to :channel

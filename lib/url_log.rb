@@ -25,8 +25,9 @@ class UrlLog
 
     return if uris.nil? || uris.empty?
 
-    found      = Database.connection[:urllog].where(url: uris, channel: m.channel.name).exclude(nick: m.user.nick).all
+    found      = Database.connection[:urllog].where(url: uris, channel: m.channel.name).all
     found_uris = found.map { |uri| uri[:url] }.to_set
+
     new_uris   = uris.select { |uri| !found_uris.include?(uri) }.map do |uri|
       {
         url: uri,
@@ -40,10 +41,12 @@ class UrlLog
 
     Database.connection[:urllog].multi_insert(new_uris) unless new_uris.empty?
 
-    found.each do |found|
-      diff = time_in_words(Time.now - found[:entrydate])
+    found.each do |uri|
+      next if uri[:nick] == m.user.nick
 
-      m.reply("#{m.user.nick}, wanha, #{found[:nick]} pastes jo #{diff} sitten")
+      diff = time_in_words(Time.now - uri[:entrydate])
+
+      m.reply("#{m.user.nick}, wanha, #{uri[:nick]} pastes jo #{diff} sitten")
     end
   end
 

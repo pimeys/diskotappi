@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'cinch'
 
 require './lib/bot_helper'
@@ -24,11 +25,13 @@ class MegaHal
   def listen(m)
     return unless bot_addressed?(m)
 
-    addressed_text = addressed_text(m)
+    addressed_text = addressed_text(m).encode('ISO-8859-1')
 
     return if addressed_text =~ /^kumpi \w+/
     return if addressed_text =~ /^genre \w+/
 
-    m.reply("#{m.user.nick}: #{hal.doreply(addressed_text)}")
+    reply = hal.doreply(addressed_text).force_encoding('ISO-8859-1').encode('UTF-8')
+
+    m.reply("#{m.user.nick}: #{reply}")
   end
 end
