@@ -1,3 +1,4 @@
 config/database.yml
+config/diskotappi.yml
 megahal.log
 megahal.txt

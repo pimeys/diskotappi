@@ -10,13 +10,13 @@ require './lib/url_log'
 require './lib/megahal'
 
 bot = Cinch::Bot.new do
+  config = YAML.load_file('./config/diskotappi.yml')
+
   configure do |c|
-    c.server = 'irc.freenode.net'
-    c.channels = ['#juliusbot']
-    c.nick = 'diskotappi'
-    c.plugins.plugins = [YouTube, SoundCloud, Spotify, Mixcloud,
-                         DecisionMaker, GenreGenerator, UrlLog,
-                         MegaHal]
+    c.server = config['server']
+    c.channels = config['channels']
+    c.nick = config['nick']
+    c.plugins.plugins = config['plugins'].map { |p| Kernel.const_get(p) }
   end
 end
 
