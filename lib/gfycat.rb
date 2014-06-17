@@ -27,7 +27,7 @@ class GfyCat
     gfy_size = Filesize.from("#{response['gfysize']} B").pretty
     gif_size = Filesize.from("#{response['gifSize']} B").pretty
 
-    m.channel.notice("GIF :: Size: #{gif_size}, HTML5: #{gfy_uri}, Size: #{gfy_size}")
+    m.channel.notice("HTML5: #{gfy_uri}, Size: #{gif_size}/#{gfy_size}")
   end
 
   private
