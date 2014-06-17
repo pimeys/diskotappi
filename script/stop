@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PATH=/bin:$PATH
+
+kill -SIGINT $(</home/diskotappi/shared/run/$1.pid)

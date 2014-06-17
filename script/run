@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export rvm_path=/home/diskotappi/.rvm
+
+source $rvm_path/scripts/rvm
+
+$rvm_path/bin/rvm rvmrc load
+
+cd /home/diskotappi/current >/dev/null
+
+bundle exec $@
