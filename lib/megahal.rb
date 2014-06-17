@@ -32,6 +32,8 @@ class MegaHal
 
     reply = hal.doreply(addressed_text).force_encoding('ISO-8859-1').encode('UTF-8')
 
+    hal.learn(addressed_text.encode('ISO-8859-1'))
+
     m.reply("#{m.user.nick}: #{reply}")
   end
 end
