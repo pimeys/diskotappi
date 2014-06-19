@@ -21,6 +21,22 @@ namespace :config do
   end
 end
 
+namespace :supervisord do
+  desc 'Reload supervisord configuration'
+  task :reload do
+    on roles(:app) do
+      execute 'supervisorctl -s unix:///home/diskotappi/shared/run/supervisord.sock reread &>/dev/null'
+    end
+  end
+
+  desc 'Restart workers'
+  task :restart => [:reload] do
+    on roles(:app) do
+      execute 'supervisorctl -s unix:///home/diskotappi/shared/run/supervisord.sock restart all &>/dev/null'
+    end
+  end
+end
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
@@ -60,5 +76,6 @@ namespace :deploy do
   after  :updated,    'config:deploy'
   after  :publishing, 'deploy:mark_revision'
   after  :publishing, 'deploy:restart'
+  before :finishing,  'supervisord:restart'
   after  :finishing,  'deploy:cleanup'
 end
