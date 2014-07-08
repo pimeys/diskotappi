@@ -16,7 +16,9 @@ class UrlLog
 
     uris = URI.extract(message).reduce([]) do |acc, uri_str|
       begin
-        acc << URI.parse(uri_str).to_s
+        uri = URI.parse(uri_str).to_s
+
+        uri =~ /(http|https|ftp)\:\/\// ? acc << URI.parse(uri_str).to_s : acc
       rescue URI::InvalidURIError
       ensure
         acc
