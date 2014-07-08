@@ -8,7 +8,7 @@ class YouTube < OembedTitleFetcher
   listen_to :channel
 
   def allowed_hosts
-    %w(www.youtube.com youtube.com)
+    %w(www.youtube.com youtube.com youtu.be)
   end
 
   def oembed(uri)
