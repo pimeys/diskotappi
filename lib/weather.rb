@@ -17,10 +17,11 @@ class Weather
     return if data['list'].empty?
 
     weather     = data['list'].first
+    place       = weather['name']
     temp        = weather['main']['temp']
     description = weather['weather'].first['description']
 
-    m.channel.notice("#{temp}ºC, #{description}")
+    m.channel.notice("#{place}: #{temp}ºC, #{description}")
   end
 
   private
