@@ -9,7 +9,7 @@ class Weather
   listen_to :channel
 
   def listen(m)
-    return if (m.message =~ /\A!w [a-zA-Z\-]/).nil?
+    return if (m.message =~ /\A!w/).nil?
 
     location = m.message.split('!w ').last
 
