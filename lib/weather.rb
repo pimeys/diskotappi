@@ -13,18 +13,7 @@ class Weather
 
     location = m.message.split('!w ').last
 
-    if location
-      data     = JSON.parse(open_uri("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
-
-      return if data['list'].empty?
-
-      weather     = data['list'].first
-      place       = weather['name']
-      temp        = weather['main']['temp']
-      description = weather['weather'].first['description']
-
-      m.channel.notice("#{place}: #{temp}ºC, #{description}")
-    else
+    if location == '!w'
       m.channel.notice("Berlin > Helsinki (toimii toimii)") and return if rand(100) == 99
 
       helsinki = JSON.parse(open_uri("http://api.openweathermap.org/data/2.5/find?q=helsinki&units=metric"))
@@ -38,6 +27,17 @@ class Weather
       else
         m.channel.notice("Berlin #{temp_bln}ºC > Helsinki #{temp_hki}ºC")
       end
+    else
+      data     = JSON.parse(open_uri("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
+
+      return if data['list'].empty?
+
+      weather     = data['list'].first
+      place       = weather['name']
+      temp        = weather['main']['temp']
+      description = weather['weather'].first['description']
+
+      m.channel.notice("#{place}: #{temp}ºC, #{description}")
     end
   end
 
