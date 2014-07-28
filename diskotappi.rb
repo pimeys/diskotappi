@@ -10,6 +10,7 @@ require './lib/url_log'
 require './lib/megahal'
 require './lib/gfycat'
 require './lib/weather'
+require './lib/vimeo'
 
 bot = Cinch::Bot.new do
   config = YAML.load_file('./config/diskotappi.yml')
