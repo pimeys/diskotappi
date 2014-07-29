@@ -19,9 +19,9 @@ class RandomMixtape
       order{ rand{} }.first[:url]
 
     if url =~ /soundcloud.com/
-      info = JSON.parse(soundcloud_oembed(url))
+      info = JSON.parse(open_uri(soundcloud_oembed(url)))
     else
-      info = JSON.parse(mixcloud_oembed(url))
+      info = JSON.parse(open_uri(mixcloud_oembed(url)))
     end
 
     m.channel.notice("#{url} (#{info['title']})")
