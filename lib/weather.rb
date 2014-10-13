@@ -37,7 +37,9 @@ class Weather
       temp        = weather['main']['temp']
       description = weather['weather'].first['description']
 
-      m.channel.notice("#{place}: #{temp}ºC, #{description}")
+      country     = weather['sys']['country']
+
+      m.channel.notice("#{place}, #{country}: #{temp}ºC, #{description}")
     end
   end
 
