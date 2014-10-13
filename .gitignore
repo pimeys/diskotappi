@@ -6,3 +6,4 @@ lib/megahal/Hal.so
 lib/megahal/megahal.h
 lib/megahal/megahal.o
 lib/megahal/ruby-interface.o
+.bundle
