@@ -48,6 +48,7 @@ class GenreGenerator
       "speed", "hard", "booty", "minimal", "latin", "deep", "funky", "industrial", "experimental",
       "intelligent", "futuristic", "psychedelic", "goa", "hardstyle", "german", "french", "ibiza",
       "progressive", "dubby", "tribal", "swedish", "brit", "gangsta", "soulful", "ghetto", "oldskool",
-      "nuskool", "jazzstep", "liquid", "neuro", "dark", "ill", "wobble", "hipster", "jytky" ]
+      "nuskool", "jazzstep", "liquid", "neuro", "dark", "ill", "wobble", "hipster", "jytky", "viuhka"
+    ]
   end
 end
