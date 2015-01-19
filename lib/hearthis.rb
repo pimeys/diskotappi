@@ -8,7 +8,7 @@ class Hearthis < OembedTitleFetcher
   listen_to :channel
 
   def allowed_hosts
-    %w(www.hearthis.at hearthis.com)
+    %w(www.hearthis.at hearthis.at)
   end
 
   def oembed(uri)
