@@ -21,7 +21,7 @@ namespace :bot do
 
   desc  'Build the MegaHAL library'
   task :build_hal do
-    Dir.chdir('./ext/megahal') do
+    Dir.chdir('./ext/hal') do
       %x( make clean rubymodule )
       Dir.chdir('./ruby') do
         %x( cp Hal.so megahal.h megahal.o ruby-interface.o ../../../lib/megahal )
