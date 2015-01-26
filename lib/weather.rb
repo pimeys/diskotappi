@@ -23,9 +23,9 @@ class Weather
       temp_bln = berlin['list'].first['main']['temp'].to_f
 
       if temp_hki > temp_bln
-        m.channel.notice("Helsinki #{temp_hki}ºC > Berlin #{temp_bln}ºC")
+        m.channel.notice("Helsinki #{temp_hki}°C > Berlin #{temp_bln}°C")
       else
-        m.channel.notice("Berlin #{temp_bln}ºC > Helsinki #{temp_hki}ºC")
+        m.channel.notice("Berlin #{temp_bln}°C > Helsinki #{temp_hki}°C")
       end
     else
       data     = JSON.parse(open_uri("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
@@ -39,7 +39,7 @@ class Weather
 
       country     = weather['sys']['country']
 
-      m.channel.notice("#{place}, #{country}: #{temp}ºC, #{description}")
+      m.channel.notice("#{place}, #{country}: #{temp}°C, #{description}")
     end
   end
 
