@@ -1,3 +1,4 @@
+require 'capistrano/bundler'
 set :application,      'diskotappi'
 set :deploy_to,        '/home/diskotappi'
 set :ruby_version,     "#{File.read('./.ruby-version').strip}"
@@ -14,7 +15,9 @@ namespace :config do
         execute :cp, "/home/diskotappi/shared/config/#{f}", "#{release_path}/config/"
       end
 
-      run("cd #{deploy_to}/current && /usr/bin/env bundle exec rake bot:build_hal")
+      within release_path do
+        execute :rake, "bot:build_hal"
+      end
     end
   end
 end
