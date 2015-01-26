@@ -19,9 +19,9 @@ class RandomMixtape
       order{ rand{} }.first[:url]
 
     if url =~ /soundcloud.com/
-      info = JSON.parse(open_uri(soundcloud_oembed(url)))
+      info = JSON.parse(OpenUri.(soundcloud_oembed(url)))
     else
-      info = JSON.parse(open_uri(mixcloud_oembed(url)))
+      info = JSON.parse(OpenUri.(mixcloud_oembed(url)))
     end
 
     m.channel.notice("#{url} (#{info['title']})")
@@ -35,15 +35,5 @@ class RandomMixtape
 
   def mixcloud_oembed(uri)
     "http://www.mixcloud.com/oembed?format=json&url=#{uri}"
-  end
-
-  def open_uri(uri)
-    curl = Curl::Easy.new
-    curl.follow_location = true
-    curl.useragent = "Ruby/#{RUBY_VERSION}"
-    curl.url = uri
-
-    curl.http_get
-    curl.body_str
   end
 end

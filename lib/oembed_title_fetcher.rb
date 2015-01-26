@@ -9,7 +9,7 @@ class OembedTitleFetcher
     return if uris.empty?
 
     titles = uris.map do |uri|
-      json = JSON.parse(open_uri(oembed(uri)))
+      json = JSON.parse(OpenUri.(oembed(uri)))
 
       json['title']
     end
@@ -29,17 +29,5 @@ class OembedTitleFetcher
     rescue URI::InvalidURIError
       []
     end
-  end
-
-  private
-
-  def open_uri(uri)
-    curl = Curl::Easy.new
-    curl.follow_location = true
-    curl.useragent = "Ruby/#{RUBY_VERSION}"
-    curl.url = uri
-
-    curl.http_get
-    curl.body_str
   end
 end

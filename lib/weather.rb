@@ -16,8 +16,8 @@ class Weather
     if location == '!w'
       m.channel.notice("Berlin > Helsinki (toimii toimii)") and return if rand(100) == 99
 
-      helsinki = JSON.parse(open_uri("http://api.openweathermap.org/data/2.5/find?q=helsinki&units=metric"))
-      berlin   = JSON.parse(open_uri("http://api.openweathermap.org/data/2.5/find?q=berlin&units=metric"))
+      helsinki = JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=helsinki&units=metric"))
+      berlin   = JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=berlin&units=metric"))
 
       temp_hki = helsinki['list'].first['main']['temp'].to_f
       temp_bln = berlin['list'].first['main']['temp'].to_f
@@ -28,7 +28,7 @@ class Weather
         m.channel.notice("Berlin #{temp_bln}°C > Helsinki #{temp_hki}°C")
       end
     else
-      data     = JSON.parse(open_uri("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
+      data     = JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
 
       return if data['list'].empty?
 
@@ -41,17 +41,5 @@ class Weather
 
       m.channel.notice("#{place}, #{country}: #{temp}°C, #{description}")
     end
-  end
-
-  private
-
-  def open_uri(uri)
-    curl = Curl::Easy.new
-    curl.follow_location = true
-    curl.useragent = "Ruby/#{RUBY_VERSION}"
-    curl.url = uri
-
-    curl.http_get
-    curl.body_str
   end
 end
