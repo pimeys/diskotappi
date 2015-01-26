@@ -14,9 +14,7 @@ namespace :config do
         execute :cp, "/home/diskotappi/shared/config/#{f}", "#{release_path}/config/"
       end
 
-      fetch(:megahal_libs).each do |f|
-        execute :cp, "/home/diskotappi/shared/lib/megahal/#{f}", "#{release_path}/lib/megahal/"
-      end
+      run("cd #{deploy_to}/current && /usr/bin/env bundle exec rake bot:build_hal")
     end
   end
 end
