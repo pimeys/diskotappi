@@ -11,6 +11,7 @@ bot = Cinch::Bot.new do
     c.nick = config['nick']
     c.user = config['user']
     c.realname = config['realname']
+    c.local_host = 'irc.entropy.fi'
     c.plugins.plugins = config['plugins'].map { |p| Kernel.const_get(p) }
   end
 end
