@@ -13,11 +13,21 @@ GEM
       capistrano (~> 3.0)
       sshkit (~> 1.2)
     cinch (2.1.0)
+    cld (0.7.0)
+      ffi
     coderay (1.1.0)
     colorize (0.7.3)
     curb (0.8.5)
+    ffi (1.9.6)
     filesize (0.0.3)
+    highline (1.6.21)
     i18n (0.6.9)
+    megahal (1.0.1)
+      cld (~> 0.7)
+      highline (~> 1.6)
+      ruby-progressbar (~> 1.7)
+      rubyzip (~> 1.1)
+      sooth (~> 1.0)
     method_source (0.8.2)
     mysql2 (0.3.16)
     net-scp (1.2.1)
@@ -27,9 +37,14 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
     rake (10.0.4)
+    ruby-progressbar (1.7.1)
+    rubyzip (1.1.6)
     sequel (4.10.0)
     slop (3.5.0)
+    sooth (1.0.0)
     sshkit (1.5.1)
       colorize
       net-scp (>= 1.1.2)
@@ -45,7 +60,9 @@ DEPENDENCIES
   cinch
   curb
   filesize
+  megahal
   mysql2
   pry
+  pry-nav
   rake (~> 10.0.0)
   sequel
