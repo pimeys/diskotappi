@@ -9,7 +9,7 @@ class DecisionMaker
   listen_to :channel
 
   def decision_regexp
-    /^kumpi[:,] \w+/
+    /^kumpi[:,]* \w+/
   end
 
   def listen(message)

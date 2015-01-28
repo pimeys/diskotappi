@@ -39,7 +39,7 @@ class MegaHal
 
     addressed_text = addressed_text(m)
 
-    return if addressed_text =~ /^kumpi[:,] \w+/
+    return if addressed_text =~ /^kumpi[:,]* \w+/
     return if addressed_text =~ /^genre \w+/
 
     longreply1 = hal.reply(addressed_text)
