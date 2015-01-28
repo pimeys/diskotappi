@@ -25,9 +25,13 @@ class MegaHal
   def initialize(bot)
     @bot      = bot
     @hal      = MegaHAL.new
+    @handlers = []
+    @timers   = []
 
     @hal.become(:diskotappi)
     @hal.train('./lib/personalities/diskotappi.phr')
+
+    __register
   end
 
   def listen(m)
