@@ -14,10 +14,6 @@ namespace :config do
       fetch(:config_files).each do |f|
         execute :cp, "/home/diskotappi/shared/config/#{f}", "#{release_path}/config/"
       end
-
-      within release_path do
-        execute :rake, "bot:build_hal"
-      end
     end
   end
 end
