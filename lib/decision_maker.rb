@@ -8,18 +8,14 @@ class DecisionMaker
 
   listen_to :channel
 
-  def decision_regexp
-    /^kumpi[:,]* \w+/
-  end
-
   def listen(message)
     return unless bot_addressed?(message)
 
     addressed_text = addressed_text(message)
 
-    return unless addressed_text =~ decision_regexp
+    return unless addressed_text =~ /^kumpi[:,]* \w+/
 
-    options = addressed_text.split(decision_regexp).last.split(' vai' ).map(&:strip)
+    options = addressed_text.split(/^kumpi[:,]*/).last.split(' vai' ).map(&:strip)
 
     return unless options.size == 2
 
