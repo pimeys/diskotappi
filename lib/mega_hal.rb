@@ -42,17 +42,15 @@ class MegaHal
     return if addressed_text =~ /^kumpi \w+/
     return if addressed_text =~ /^genre \w+/
 
-    longreply1 = hal.reply(addressed_text).capitalize
-    longreply2 = hal.reply(addressed_text).capitalize
+    longreply1 = hal.reply(addressed_text)
+    longreply2 = hal.reply(addressed_text)
     phrases1   = longreply1.split(/[\.\?\!\,]/).map(&:strip)
     phrases2   = longreply2.split(/[\.\?\!\,]/).map(&:strip)
-    phrase1    = phrases1[Random.rand(phrases.size)].split(' ')
-    phrase2    = phrases2[Random.rand(phrases.size)].split(' ')
+    phrase1    = phrases1[Random.rand(phrases1.size)].split(' ')
+    phrase2    = phrases2[Random.rand(phrases2.size)].split(' ')
     part1      = phrase1[0..(phrase1.size / 2)]
     part2      = phrase2[(phrase2.size / 2)..(phrase2.size)]
     reply      = part1.last == part2.first ? part1[0..-2] + part2 : part1 + part2
-
-    hal.learn(addressed_text)
 
     m.reply("#{m.user.nick}: #{reply.join(' ').capitalize}.")
   end
