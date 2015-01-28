@@ -52,6 +52,6 @@ class MegaHal
     part2      = phrase2[(phrase2.size / 2)..(phrase2.size)]
     reply      = part1.last == part2.first ? part1[0..-2] + part2 : part1 + part2
 
-    m.reply("#{m.user.nick}: #{reply.join(' ').capitalize}.")
+    m.reply("#{m.user.nick}: #{reply.join(' ')}.")
   end
 end
