@@ -1,0 +1,4 @@
+--color
+--order rand
+--pattern **/*_spec.rb
+--default-path spec
