@@ -36,7 +36,7 @@ class Quote
   end
 
   def quote_mode(message)
-    if message =~ /\A!q add (<[^>]+>) \w+/
+    if message =~ /\A!q add (<[^>]+>) .+/
       :add
     elsif message =~ /\A!q \w+/
       :named_random
