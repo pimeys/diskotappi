@@ -24,7 +24,7 @@ class Quote
       m.reply("#{m.user.nick}, Quote added")
     elsif quote_mode(m.message) == :named_random
       search = m.message.split('!q ').last
-      text   = dataset.select(:text).where{ Sequel.like(:text, "%#{search}%")}.
+      text   = dataset.select(:text).where(text: Regexp.new(search)).
                order { rand{} }.first
 
       m.reply(text[:text]) if text
