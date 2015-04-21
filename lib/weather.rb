@@ -2,11 +2,21 @@
 require 'uri'
 require 'json'
 require 'curb'
+require 'dalli'
 
 class Weather
   include Cinch::Plugin
 
   listen_to :channel
+
+  def initialize(bot)
+    @bot      = bot
+    @handlers = []
+    @timers   = []
+    @cache    = Dalli::Client.new('localhost:11211', compress: true, expires_in: 60 * 15)
+
+    __register
+  end
 
   def listen(m)
     return if (m.message =~ /\A!w/).nil?
@@ -14,10 +24,8 @@ class Weather
     location = m.message.split('!w ').last
 
     if location == '!w'
-      m.channel.notice("Berlin > Helsinki (toimii toimii)") and return if rand(100) == 99
-
-      helsinki = JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=helsinki&units=metric"))
-      berlin   = JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=berlin&units=metric"))
+      helsinki = fetch_weather('helsinki')
+      berlin   = fetch_weather('berlin')
 
       temp_hki = helsinki['list'].first['main']['temp'].to_f
       temp_bln = berlin['list'].first['main']['temp'].to_f
@@ -28,7 +36,7 @@ class Weather
         m.channel.notice("Berlin #{temp_bln}°C > Helsinki #{temp_hki}°C")
       end
     else
-      data     = JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
+      data = fetch_weather(location)
 
       return if data['list'].empty?
 
@@ -40,6 +48,12 @@ class Weather
       country     = weather['sys']['country']
 
       m.channel.notice("#{place}, #{country}: #{temp}°C, #{description}")
+    end
+  end
+
+  def fetch_weather(location)
+    @cache.fetch("weather-#{location}") do
+      JSON.parse(OpenURI.("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
     end
   end
 end
