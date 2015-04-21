@@ -53,7 +53,7 @@ class Weather
 
   def fetch_weather(location)
     @cache.fetch("weather-#{location}") do
-      JSON.parse(OpenURI.("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
+      JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
     end
   end
 end

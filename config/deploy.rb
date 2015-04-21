@@ -22,30 +22,19 @@ namespace :supervisord do
   desc 'Reload supervisord configuration'
   task :reload do
     on roles(:app) do
-      execute 'supervisorctl -s unix:///home/diskotappi/shared/run/supervisord.sock reread &>/dev/null'
+      execute 'supervisorctl reread &>/dev/null'
     end
   end
 
   desc 'Restart workers'
   task :restart => [:reload] do
     on roles(:app) do
-      execute 'supervisorctl -s unix:///home/diskotappi/shared/run/supervisord.sock restart all &>/dev/null'
+      execute 'supervisorctl restart all &>/dev/null'
     end
   end
 end
 
 namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    SSHKit.config.command_map[:rake]  = "engine_bundle exec rake"
-
-    on roles(:app), in: :sequence, wait: 5 do
-      within current_path do
-        #execute 'supervisorctl restart engine'
-      end
-    end
-  end
-
   desc "Displays the commits since your last deploy."
   task pending: :'git:update' do
     on roles(:notification) do |h|
