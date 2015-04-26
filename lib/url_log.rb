@@ -58,24 +58,24 @@ class UrlLog
       days  = (seconds % time_conversions[:year_in_seconds] / time_conversions[:day_in_seconds]).to_i
 
       if years == 1
-        days <= 1 ? 'vuosi ja yksi päivä' : "vuosi ja #{days} päivää"
+        days <= 1 ? "vuosi ja yksi päivä" : "vuosi ja #{days} päivää"
       else
-        days <= 1 ? '#{years} vuotta ja yksi päivä' : "#{years} vuotta ja #{days} päivää"
+        days <= 1 ? "#{years} vuotta ja yksi päivä" : "#{years} vuotta ja #{days} päivää"
       end
     elsif seconds >= time_conversions[:day_in_seconds]
       days = (seconds / time_conversions[:day_in_seconds]).to_i
 
-      days == 1 ? 'päivä' : "#{days} päivää"
+      days == 1 ? "päivä" : "#{days} päivää"
     elsif seconds >= time_conversions[:hour_in_seconds]
       hours = (seconds / time_conversions[:hour_in_seconds]).to_i
 
-      hours == 1 ? 'tunti' : "#{hours} tuntia"
+      hours == 1 ? "tunti" : "#{hours} tuntia"
     elsif seconds >= time_conversions[:minute_in_seconds]
       minutes = (seconds / time_conversions[:minute_in_seconds]).to_i
 
-      minutes == 1 ? 'minuutti' : "#{minutes} minuuttia"
+      minutes == 1 ? "minuutti" : "#{minutes} minuuttia"
     else
-      'melkein minuutti'
+      "melkein minuutti"
     end
   end
 
