@@ -24,8 +24,16 @@ class Weather
     location = m.message.split('!w ').last
 
     if location == '!w'
-      helsinki = fetch_weather('helsinki')
-      berlin   = fetch_weather('berlin')
+      threads = [:helsinki, :berlin].reduce({}) do |acc, city|
+        acc[city] = Thread.new { Thread.current[:weather] = fetch_weather(city) }
+
+        acc
+      end
+
+      threads.values.each(&:join)
+
+      helsinki = threads[:helsinki][:weather]
+      berlin   = threads[:berlin][:weather]
 
       temp_hki = helsinki['list'].first['main']['temp'].to_f
       temp_bln = berlin['list'].first['main']['temp'].to_f
