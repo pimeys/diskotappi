@@ -3,6 +3,7 @@ require 'uri'
 require 'json'
 require 'curb'
 require 'dalli'
+require 'nokogiri'
 
 class Weather
   include Cinch::Plugin
