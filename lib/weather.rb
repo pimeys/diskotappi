@@ -43,6 +43,10 @@ class Weather
       else
         m.channel.notice("Berlin #{temp_bln}°C > Helsinki #{temp_hki}°C")
       end
+    elsif location == 'sompasauna'
+      temp = fetch_sauna
+
+      m.channel.notice("Sompasauna #{temp}°C")
     else
       data = fetch_weather(location)
 
@@ -63,5 +67,11 @@ class Weather
     @cache.fetch("weather-#{location}") do
       JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
     end
+  end
+
+  def fetch_sauna
+    doc = Nokogiri::HTML(OpenUri.("http://sompasauna.fi/lampotila/"))
+
+    doc.xpath("//h3[text()='Saunassa']/following::h1").children.first.text.gsub(' ', '')
   end
 end
