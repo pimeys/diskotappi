@@ -47,7 +47,7 @@ class Weather
     elsif location == 'sompasauna'
       temp = fetch_sauna
 
-      m.channel.notice("Sompasauna #{temp}°C")
+      m.channel.notice("Sompasauna #{temp}")
     else
       data = fetch_weather(location)
 
