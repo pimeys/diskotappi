@@ -19,7 +19,10 @@ class Quote
 
       return if dataset.where(text: text).count > 0
 
-      dataset.insert(text: text)
+      nick_with_rubbish = /(<[^>]+>)/.match(quote)[0]
+      nick = /((?:[A-z0-9_-]+))/.match(nick_with_rubbish)[0]
+
+      dataset.insert(text: text, adder: m.user.nick, nick: nick)
 
       m.reply("#{m.user.nick}, Quote added")
     elsif quote_mode(m.message) == :named_random
@@ -38,7 +41,7 @@ class Quote
   def quote_mode(message)
     if message =~ /\A!q add (<[^>]+>) .+/
       :add
-    elsif message =~ /\A!q \w+/
+    elsif message =~ /\A!q .+/
       :named_random
     else
       :random
