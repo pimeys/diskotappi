@@ -19,7 +19,7 @@ class Quote
 
       return if dataset.where(text: text).count > 0
 
-      nick_with_rubbish = /(<[^>]+>)/.match(quote)[0]
+      nick_with_rubbish = /(<[^>]+>)/.match(text)[0]
       nick = /((?:[A-z0-9_-]+))/.match(nick_with_rubbish)[0]
 
       dataset.insert(text: text, adder: m.user.nick, nick: nick)
