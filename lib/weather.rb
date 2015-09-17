@@ -25,7 +25,7 @@ class Weather
     location = m.message.split('!w ').last
 
     if location == '!w'
-      threads = [:helsinki, :berlin].reduce({}) do |acc, city|
+      threads = [:Helsinki, :Berlin, :London].reduce({}) do |acc, city|
         acc[city] = Thread.new { Thread.current[:weather] = fetch_weather(city) }
 
         acc
@@ -33,17 +33,15 @@ class Weather
 
       threads.values.each(&:join)
 
-      helsinki = threads[:helsinki][:weather]
-      berlin   = threads[:berlin][:weather]
-
-      temp_hki = helsinki['list'].first['main']['temp'].to_f
-      temp_bln = berlin['list'].first['main']['temp'].to_f
-
-      if temp_hki > temp_bln
-        m.channel.notice("Helsinki #{temp_hki}°C > Berlin #{temp_bln}°C")
-      else
-        m.channel.notice("Berlin #{temp_bln}°C > Helsinki #{temp_hki}°C")
+      unsorted = threads.map do |city, response|
+        { city: city, temp: response['list'].first['main']['temp'].to_f }
       end
+
+      sorted = unsorted.sort_by { |city| -city[:temp] }
+
+      rendered = sorted.map { |city| "#{city[:city]} #{city[:temp]}°C"}
+
+      m.channel.notice(rendered.join(" > "))
     elsif location == 'sompasauna'
       temp = fetch_sauna
 
