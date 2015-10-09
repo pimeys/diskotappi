@@ -64,11 +64,21 @@ class Weather
 
   def fetch_weather(location)
     @cache.fetch("weather-#{location}") do
-      JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric"))
+      JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric&appid=#{api_key}"))
     end
   end
 
   def fetch_sauna
     JSON.parse(OpenUri.("http://sompasauna.fi/lampotila/index.php/on/saunassa?format=json"))
+  end
+
+  protected
+
+  def api_key
+    return @api_key if @api_key
+
+    config = YAML.load_file("./config/weather.yml")
+
+    @api_key = config['api_key']
   end
 end
