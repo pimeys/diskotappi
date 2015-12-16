@@ -48,7 +48,7 @@ class UrlLog
 
       diff = time_in_words(Time.now - uri[:entrydate])
 
-      m.reply("#{m.user.nick}, wanha, #{uri[:nick]} pastes jo #{diff} sitten")
+      m.reply("#{m.user.nick}, \"uus\", #{uri[:nick]} pastes jo #{diff} sitten")
     end
   end
 
