@@ -34,7 +34,8 @@ class Weather
       threads.values.each(&:join)
 
       unsorted = threads.map do |city, thread|
-        { city: city, temp: thread[:weather]['list'].first['main']['temp'].to_f }
+        weather = thread[:weather]['list'].first
+        { city: weather['name'], temp: weather['main']['temp'].to_f }
       end
 
       sorted = unsorted.sort_by { |city| -city[:temp] }
