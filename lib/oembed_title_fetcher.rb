@@ -8,13 +8,9 @@ class OembedTitleFetcher
 
     return if uris.empty?
 
-    titles = uris.map do |uri|
-      json = JSON.parse(OpenUri.(oembed(uri)))
+    title = JSON.parse(OpenUri.(oembed(uris.first)))['title']
 
-      json['title']
-    end
-
-    m.channel.notice("#{self.class.name} :: #{titles.join(' // ')}")
+    m.channel.notice("#{self.class.name} :: #{title}")
   end
 
   protected
