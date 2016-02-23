@@ -10,13 +10,16 @@ class GenreGenerator
   listen_to :channel
 
   def listen(message)
-    return unless bot_addressed?(message)
+    return if (m.message =~ /\A!genre/).nil?
 
-    addressed_text = addressed_text(message)
+    addressed_text = m.message.gsub("!genre")
 
-    return unless addressed_text =~ /^genre \w+/
+    return if addressed_text.empty?
 
-    given_genre = addressed_text.split('genre').last.strip.split
+    given_genre = addressed_text.strip.split
+
+    return if given_genre.empty?
+
     mains       = main_genres.select { |genre| !given_genre.include?(genre) }
     subs        = subgenres.select   { |genre| !given_genre.include?(genre) }
     main_dice   = genre_rand(0, mains.size - 1)
