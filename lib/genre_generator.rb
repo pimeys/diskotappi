@@ -9,7 +9,7 @@ class GenreGenerator
 
   listen_to :channel
 
-  def listen(message)
+  def listen(m)
     return if (m.message =~ /\A!genre/).nil?
 
     addressed_text = m.message.gsub("!genre")
@@ -31,7 +31,7 @@ class GenreGenerator
 
     generated.insert(replace_at, given_genre.join(' '))
 
-    message.reply("#{message.user.nick}: #{generated.join(' ')}")
+    m.reply("#{m.user.nick}: #{generated.join(' ')}")
   end
 
   private
