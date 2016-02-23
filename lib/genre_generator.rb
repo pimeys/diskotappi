@@ -12,7 +12,7 @@ class GenreGenerator
   def listen(m)
     return if (m.message =~ /\A!genre/).nil?
 
-    addressed_text = m.message.gsub("!genre")
+    addressed_text = m.message.gsub("!genre", "")
 
     return if addressed_text.empty?
 
