@@ -23,6 +23,6 @@ class Twitter < OembedTitleFetcher
 
     tweet_text = Nokogiri::HTML(tweet).text.strip
 
-    m.chammel.notice("#{self.class.name} :: #{tweet_text}")
+    m.channel.notice("#{self.class.name} :: #{tweet_text}")
   end
 end
