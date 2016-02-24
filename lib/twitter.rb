@@ -1,4 +1,5 @@
 require 'uri'
+require 'cgi'
 require 'json'
 require 'cinch'
 require 'nokogiri'
@@ -19,7 +20,7 @@ class Twitter < OembedTitleFetcher
 
     return if uris.empty?
 
-    tweet = JSON.parse(OpenUri.("https://api.twitter.com/1/statuses/oembed.json?#{uris.first}"))["html"]
+    tweet = JSON.parse(OpenUri.("https://api.twitter.com/1/statuses/oembed.json?#{CGI.escape(uris.first)}"))["html"]
 
     tweet_text = Nokogiri::HTML(tweet).text.strip
 
