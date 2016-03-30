@@ -11,7 +11,7 @@ class Vice
   def listen(m)
     return if (m.message =~ /\A!vice/).nil?
 
-    m.reply("VICE: #{phrases.sample}")
+    m.channel.notice("VICE: #{phrases.sample}")
   end
 
   private

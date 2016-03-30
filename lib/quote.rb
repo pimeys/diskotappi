@@ -30,11 +30,11 @@ class Quote
       text   = dataset.select(:text).where(Sequel.like(:text, Regexp.new(search))).
                order { rand{} }.first
 
-      m.reply(text[:text]) if text
+      m.channel.notice(text[:text]) if text
     else
       text = dataset.select(:text).order { rand{} }.first
 
-      m.reply(text[:text]) if text
+      m.channel.notice(text[:text]) if text
     end
   end
 
