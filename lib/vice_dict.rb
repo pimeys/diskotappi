@@ -4,7 +4,7 @@ module ViceDict
     "Teenage",
     "Old",
     "Over the Hill"
-  ]
+  ].freeze
 
   AMOUNT = [
     "3",
@@ -29,7 +29,7 @@ module ViceDict
     "22",
     "23",
     "99"
-  ]
+  ].freeze
 
   ANSWER = [
     "Decides",
@@ -40,7 +40,7 @@ module ViceDict
     "Knows the Answer",
     "Sleeps His Way to the Answer",
     "Uncovers the Truth"
-  ]
+  ].freeze
 
   BOUGHT_SOLD = [
     "Bought",
@@ -49,7 +49,7 @@ module ViceDict
     "Flogged",
     "Shifted",
     "Purchased"
-  ]
+  ].freeze
 
   CHANGING = [
     "Building",
@@ -67,14 +67,14 @@ module ViceDict
     "Mushrooming",
     "No More",
     "Surviving"
-  ]
+  ].freeze
 
   COOLEST = [
     "Coolest",
     "Most Contemporary",
     "Edgiest",
     "Hippest"
-  ]
+  ].freeze
 
   DRUG_TAKING1 = [
     "Anal Funnelling",
@@ -85,7 +85,7 @@ module ViceDict
     "Ingesting",
     "Injecting",
     "Mainlining"
-  ]
+  ].freeze
 
   DRUG_TAKING2 = [
     "Racking up",
@@ -97,7 +97,7 @@ module ViceDict
     "Speedballing",
     "Swallowing",
     "Taking"
-  ]
+  ].freeze
 
   DRUG1 = [
     "2C-B",
@@ -114,7 +114,7 @@ module ViceDict
     "Ecstasy",
     "Freebase",
     "GHB"
-  ]
+  ].freeze
 
   DRUG2 = [
     "Glue",
@@ -134,7 +134,7 @@ module ViceDict
     "Shrooms",
     "Weasel Dust",
     "Weed"
-  ]
+  ].freeze
 
   FAKE = [
     "Bogus",
@@ -143,7 +143,7 @@ module ViceDict
     "Counterfeit",
     "Moody",
     "Dodgy"
-  ]
+  ].freeze
 
   FAMILY_MEMBER = [
     "Brother",
@@ -161,7 +161,7 @@ module ViceDict
     "Postman",
     "Step Brother",
     "Uncle"
-  ]
+  ].freeze
 
   FESTIVAL = [
     "Burning Man",
@@ -180,7 +180,7 @@ module ViceDict
     "SXSW",
     "Sundance",
     "Warehouse Project"
-  ]
+  ].freeze
 
   GENRE = [
     "Ambient-pop",
@@ -218,7 +218,7 @@ module ViceDict
     "Sprock",
     "Tumblrcore",
     "Witchhouse"
-  ]
+  ].freeze
 
   GIGGED = [
     "Appeared as a Hologram at",
@@ -227,7 +227,7 @@ module ViceDict
     "Gigged at",
     "Rejected",
     "Played"
-  ]
+  ].freeze
 
   GUIDE = [
     "Explorations in",
@@ -235,7 +235,7 @@ module ViceDict
     "Tour of",
     "Travels in",
     "Trip Around"
-  ]
+  ].freeze
 
   GROUP = [
     "Cartel",
@@ -245,7 +245,7 @@ module ViceDict
     "Group",
     "Subculture",
     "Tribe"
-  ]
+  ].freeze
 
   GANG = [
     "The Bloods",
@@ -269,16 +269,16 @@ module ViceDict
     "The Croxteth Crew",
     "The Peckham Boys",
     "The Tijuana Cartel"
-  ]
+  ].freeze
 
   WE = [
     "I",
     "We"
-  ]
+  ].freeze
 
   MUSIC_SCENE = [
     "Scene"
-  ]
+  ].freeze
 
   NATIONALITY = [
     "Bolivian",
@@ -328,7 +328,7 @@ module ViceDict
     "Vietnamese",
     "Zambian",
     "Zimbabwean"
-  ]
+  ].freeze
 
   OBJECT1 = [
     "Bazooka",
@@ -348,7 +348,7 @@ module ViceDict
     "Keyboard",
     "MacBook",
     "Lego Brick"
-  ]
+  ].freeze
 
   OBJECT2 = [
     "Light Sabre",
@@ -368,7 +368,7 @@ module ViceDict
     "Tampon",
     "Thong",
     "TV Remote"
-  ]
+  ].freeze
 
   OCCUPATION1 = [
     "Barista",
@@ -389,7 +389,7 @@ module ViceDict
     "Hipster",
     "Human Trafficker",
     "Jimmy Saville impersonator"
-  ]
+  ].freeze
 
   OCCUPATION2 = [
     "Media Runner",
@@ -412,7 +412,7 @@ module ViceDict
     "Supermodel",
     "Steel Worker",
     "Taxi Driver"
-  ]
+  ].freeze
 
   PERSON1 = [
     "Aaron Schwarz",
@@ -455,7 +455,7 @@ module ViceDict
     "John Lennon",
     "Justin Bieber",
     "Kanye West"
-  ]
+  ].freeze
 
   PERSON2 = [
     "Kanye West",
@@ -507,7 +507,7 @@ module ViceDict
     "Tara Reid",
     "Tupac",
     "Vladimir Putin"
-  ]
+  ].freeze
 
   PLACE1 = [
     "Bangkok",
@@ -529,7 +529,7 @@ module ViceDict
     "Iran",
     "Iraq",
     "Jerusalem"
-  ]
+  ].freeze
 
   PLACE2 = [
     "Johannesburg",
@@ -556,9 +556,7 @@ module ViceDict
     "Congo",
     "Sao Paolo",
     "Williamsburg"
-  ]
-
-  PLACE = PLACE1 + PLACE2
+  ].freeze
 
   SEXUAL_ORIENTATION = [
     "Gay",
@@ -566,7 +564,7 @@ module ViceDict
     "Lesbian",
     "Feminist",
     "Queer"
-  ]
+  ].freeze
 
   SCENARIO = [
     "At College",
@@ -585,7 +583,7 @@ module ViceDict
     "Playing Russian Roulette",
     "Undercover",
     "Underground"
-  ]
+  ].freeze
 
   STATUSES = [
     "Bi-curious",
@@ -593,7 +591,7 @@ module ViceDict
     "Thalidomide",
     "Paraplegic",
     "Transgender"
-  ]
+  ].freeze
 
   SWAPPING = [
     "Exchanging",
@@ -601,7 +599,7 @@ module ViceDict
     "Swapping",
     "Switching",
     "Trading"
-  ]
+  ].freeze
 
   TIME = [
     "24 Hours",
@@ -622,7 +620,7 @@ module ViceDict
     "Passover",
     "Fucking Ages",
     "Way Too Long"
-  ]
+  ].freeze
 
   TV_SHOW = [
     "Archer",
@@ -654,7 +652,7 @@ module ViceDict
     "Twin Peaks",
     "T.O.W.I.E.",
     "Catfish"
-  ]
+  ].freeze
 
   PAIN = [
     "Killed",
@@ -668,7 +666,7 @@ module ViceDict
     "Defiled",
     "Abused",
     "Assaulted"
-  ]
+  ].freeze
 
   RELIGION = [
     "Christian",
@@ -681,7 +679,7 @@ module ViceDict
     "Sikh",
     "Pagan",
     "Kemetist"
-  ]
+  ].freeze
 
   SOCIAL_MEDIA_ACTION = [
     "Posted it on Facebook",
@@ -693,7 +691,7 @@ module ViceDict
     "Created an Account for it on Tinder",
     "Sent Out a Bunch of Snapchats",
     "Slapped it on Youtube"
-  ]
+  ].freeze
 
   SOCIAL_NETWORK = [
     "Facebook",
@@ -707,55 +705,55 @@ module ViceDict
     "Snapchat",
     "MySpace",
     "AirBnB"
-  ]
+  ].freeze
 
   DOING_BAD = [
     "Fellating",
     "Having Sex with",
     "Kissing"
-  ]
+  ].freeze
 
   FOUND = [
     "Caught",
     "Documented",
     "Filmed",
     "Found"
-  ]
+  ].freeze
 
   WORST = [
     "Most Backward Place We\'ve Ever Been",
     "Seediest Place in the World",
     "Most Dangerous Place on Earth"
-  ]
+  ].freeze
 
   HOW_WHY = [
     "How",
     "Why"
-  ]
+  ].freeze
 
   ARTICLE_TYPE = [
     "The Definitive Guide",
     "A Documentary",
     "We Go Deep Undercover"
-  ]
+  ].freeze
 
   FRONT = [
     "Just a Front for",
     "Full of",
     "Packed with",
     "A Facade For"
-  ]
+  ].freeze
 
   BAND = [
     "Band"
-  ]
+  ].freeze
 
   LIVED = [
     "Lived as",
     "Began Life as",
     "Masqueraded as",
     "Pretended to be"
-  ]
+  ].freeze
 
   REASON = [
     "For No Reason At All",
@@ -766,38 +764,38 @@ module ViceDict
     "Because That\'s Journalism",
     "To Write This Article",
     "As a Joke"
-  ]
+  ].freeze
 
   SAVE = [
     "Save",
     "Stop",
     "Prevent"
-  ]
+  ].freeze
 
   DEBATING = [
     "Debating",
     "Deliberating",
     "Considering"
-  ]
+  ].freeze
 
   DISCOVER = [
     "Discover",
     "Find Out",
     "See"
-  ]
+  ].freeze
 
   WENT = [
     "Went To",
     "Flew To",
     "Travelled To",
     "Hitchhiked To"
-  ]
+  ].freeze
 
   HAPPENED = [
     "Happened",
     "Went On",
     "Went Down"
-  ]
+  ].freeze
 
   HUMAN = [
     "Man",
@@ -807,14 +805,14 @@ module ViceDict
     "Girl",
     "Boy",
     "Baby"
-  ]
+  ].freeze
 
   MET = [
     "Met",
     "Stumbled Across",
     "Found",
     "Ignored"
-  ]
+  ].freeze
 
   MEMBER = [
     "A Member",
@@ -822,15 +820,16 @@ module ViceDict
     "A Foe",
     "An Ememy",
     "A Whistleblower"
-  ]
+  ].freeze
 
-  STATUS_RELIGION = STATUSES + RELIGION
-  STATUS_RELIGION_NATIONALITY = STATUS_RELIGION + NATIONALITY
-  SEXUAL_ORIENTATION_RELIGION = SEXUAL_ORIENTATION + RELIGION
-  PLACE_FESTIVAL = PLACE1 + PLACE2 + FESTIVAL
-  OCCUPATION = OCCUPATION1 + OCCUPATION2
-  DRUG_TAKING = DRUG_TAKING1 + DRUG_TAKING2
-  DRUG = DRUG1 + DRUG2
-  PERSON = PERSON1 + PERSON2
-  OBJECT = OBJECT1 + OBJECT2
+  STATUS_RELIGION = (STATUSES + RELIGION).freeze
+  STATUS_RELIGION_NATIONALITY = (STATUS_RELIGION + NATIONALITY).freeze
+  SEXUAL_ORIENTATION_RELIGION = (SEXUAL_ORIENTATION + RELIGION).freeze
+  PLACE_FESTIVAL = (PLACE1 + PLACE2 + FESTIVAL).freeze
+  OCCUPATION = (OCCUPATION1 + OCCUPATION2).freeze
+  DRUG_TAKING = (DRUG_TAKING1 + DRUG_TAKING2).freeze
+  DRUG = (DRUG1 + DRUG2).freeze
+  PERSON = (PERSON1 + PERSON2).freeze
+  OBJECT = (OBJECT1 + OBJECT2).freeze
+  PLACE = (PLACE1 + PLACE2).freeze
 end
