@@ -58,4 +58,4 @@ Random mixtape
 Vice titles
 -----------
 
- * `!vice` generates a mock Vice magazin title
+ * `!vice` generates a mock Vice magazine title
