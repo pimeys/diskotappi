@@ -26,6 +26,7 @@ Works for the following services:
  * Vimeo
  * YLE Areena
  * Youtube
+ * HS.fi
 
 For every uri, if it's pasted already, the bot will complain that the link is
 old.
