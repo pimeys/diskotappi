@@ -78,9 +78,7 @@ class Weather
   end
 
   def fetch_kertsi
-    @cache.fetch("weather-kertsi") do
-      JSON.parse(OpenUri.("https://api.particle.io/v1/devices/380036001047343432313031/diskotappi?access_token=#{config['kertsi_key']}"))
-    end
+    JSON.parse(OpenUri.("https://api.particle.io/v1/devices/380036001047343432313031/diskotappi?access_token=#{config['kertsi_key']}"))
   end
 
   protected
