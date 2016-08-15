@@ -9,7 +9,7 @@ class Ei
   def listen(m)
     return if (m.message =~ /\A!ei/).nil?
 
-    nick = ["<@TheH>", "<@eltron"][rand(2)]
+    nick = ["<@TheH>", "<@eltron>"][rand(2)]
 
     m.channel.notice("#{nick} ei")
   end
