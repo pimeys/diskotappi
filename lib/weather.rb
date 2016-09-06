@@ -34,7 +34,7 @@ class Weather
       threads.values.each(&:join)
 
       unsorted = threads.map do |city, thread|
-        weather = thread[:weather]['list'].first
+        weather = thread[:weather]
         { city: weather['name'], temp: weather['main']['temp'].to_f }
       end
 
@@ -52,24 +52,25 @@ class Weather
 
       m.channel.notice(temp['result'])
     else
-      data = fetch_weather(location)
+      weather = fetch_weather(location)
 
-      return if data['list'].empty?
+      return if weather['cod'] != 200
 
-      weather     = data['list'].first
       place       = weather['name']
       temp        = weather['main']['temp']
+      temp_min    = weather['main']['temp_min']
+      temp_max    = weather['main']['temp_max']
       description = weather['weather'].first['description']
 
       country     = weather['sys']['country']
 
-      m.channel.notice("#{place}, #{country}: #{temp}°C, #{description}")
+      m.channel.notice("#{place}, #{country}: #{temp}°C (#{temp_min}°C-#{temp_max}°C), #{description}")
     end
   end
 
   def fetch_weather(location)
     @cache.fetch("weather-#{location}") do
-      JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/find?q=#{location}&units=metric&appid=#{config['api_key']}"))
+      JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/weather?q=#{location}&units=metric&appid=#{config['api_key']}"))
     end
   end
 
