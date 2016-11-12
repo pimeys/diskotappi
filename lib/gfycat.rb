@@ -24,7 +24,7 @@ class GfyCat
 
     response = JSON.parse(curl.body_str)
     gfy_uri  = "http://gfycat.com/#{response['gfyName']}"
-    gfy_size = Filesize.from("#{response['gfysize']} B").pretty
+    gfy_size = Filesize.from("#{response['webmSize']} B").pretty
     gif_size = Filesize.from("#{response['gifSize']} B").pretty
 
     m.channel.notice("#{gfy_uri} (#{gif_size}/#{gfy_size})")
