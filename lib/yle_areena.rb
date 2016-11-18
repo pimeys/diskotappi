@@ -21,6 +21,6 @@ class YleAreena < OembedTitleFetcher
     uri = uris.first
     title = Nokogiri::HTML(OpenUri.(uri)).title.split("|").first.strip
 
-    m.channel.notice("YLE Areena :: #{title}")
+    m.channel.notice("YLE :: #{title}")
   end
 end
