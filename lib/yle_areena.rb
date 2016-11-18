@@ -10,7 +10,7 @@ class YleAreena < OembedTitleFetcher
   listen_to :channel
 
   def allowed_hosts
-    %w(areena.yle.fi)
+    %w(yle.fi)
   end
 
   def listen(m)
