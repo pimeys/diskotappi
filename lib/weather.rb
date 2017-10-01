@@ -2,7 +2,6 @@
 require 'uri'
 require 'json'
 require 'curb'
-require 'dalli'
 require 'nokogiri'
 
 class Weather
@@ -14,7 +13,6 @@ class Weather
     @bot      = bot
     @handlers = []
     @timers   = []
-    @cache    = Dalli::Client.new('localhost:11211', compress: true, expires_in: 60 * 15)
 
     __register
   end
@@ -69,9 +67,7 @@ class Weather
   end
 
   def fetch_weather(location)
-    @cache.fetch("weather-#{location}") do
-      JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/weather?q=#{location}&units=metric&appid=#{config['api_key']}"))
-    end
+    JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/weather?q=#{location}&units=metric&appid=#{config['api_key']}"))
   end
 
   def fetch_sauna
