@@ -14,4 +14,4 @@ ENV BUNDLE_PATH "/diskotappi/.bundles"
 ENV BUNDLE_DISABLE_SHARED_GEMS "1"
 RUN bundle install
 
-CMD ["ruby", "diskotappi.rb"]
+CMD ["bundle", "exec", "ruby", "diskotappi.rb"]
