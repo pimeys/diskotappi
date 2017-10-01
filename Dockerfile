@@ -1,5 +1,5 @@
 FROM ruby:alpine
-MAINTAINER Julius de Bruijn <julius.debruijn@360dialog.com>
+MAINTAINER Julius de Bruijn <julius+entropy@nauk.io>
 
 RUN apk update && apk upgrade && apk --update add \
     libstdc++ tzdata bash ca-certificates curl-dev gcc g++ make \
