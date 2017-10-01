@@ -10,4 +10,4 @@ run:
 	docker run -h irc.entropy.fi diskotappi
 
 daemon:
-	docker run -d -h irc.entropy.fi diskotappi
+	docker run -d --restart unless-stopped -h irc.entropy.fi diskotappi
