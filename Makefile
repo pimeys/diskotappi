@@ -11,3 +11,8 @@ run:
 
 daemon:
 	docker run -d --restart unless-stopped -h irc.entropy.fi diskotappi
+
+update:
+	docker build -t diskotappi .
+	docker stop diskotappi
+	docker run -d --restart unless-stopped -h irc.entropy.fi diskotappi

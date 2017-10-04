@@ -1,13 +1,30 @@
-server: 'irc.freenode.net'
+server: 'irc.cs.hut.fi'
 channels:
-  - '#juliusbot'
+  - '#channel1'
+  - '#channel2'
+  - '#channel3'
 nick: 'diskotappi'
+user: 'diskotappi'
+realname: 'iso hali'
 plugins:
   - YouTube
-  - SoundCloud
+  - Soundcloud
   - Spotify
   - Mixcloud
   - DecisionMaker
   - GenreGenerator
   - UrlLog
   - MegaHal
+  - GfyCat
+  - Weather
+  - Vimeo
+  - RandomMixtape
+  - Hearthis
+  - Quote
+  - Twitter
+  - ResidentAdvisor
+  - YleAreena
+  - Vice
+  - HsFi
+  - Ei
+  - Lol

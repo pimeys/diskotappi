@@ -6,12 +6,17 @@ RUN apk update && apk upgrade && apk --update add \
     mariadb-dev musl-dev libffi-dev zlib-dev libxml2-dev automake \
     && echo 'gem: --no-document' > /etc/gemrc
 
-ADD . /diskotappi
-WORKDIR /diskotappi
-RUN mkdir /diskotappi/.bundles
+ENV APP_HOME /diskotappi
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+ADD Gemfile* $APP_HOME/
 
-ENV BUNDLE_PATH "/diskotappi/.bundles"
-ENV BUNDLE_DISABLE_SHARED_GEMS "1"
+ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
+  BUNDLE_JOBS=2 \
+  BUNDLE_PATH=/bundle
+
 RUN bundle install
+
+ADD . $APP_HOME
 
 CMD ["bundle", "exec", "ruby", "diskotappi.rb"]

@@ -1,6 +1,6 @@
 adapter: 'mysql2'
-username: 'CHANGEME'
+username: 'ChANGEME'
 password: 'CHANGEME'
-hostname: 'localhost'
+hostname: 'CHANGEME'
 port: 3006
-schema: 'biletappi'
+schema: 'CHANGEME'
