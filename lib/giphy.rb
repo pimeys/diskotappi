@@ -19,7 +19,7 @@ class Giphy
       params += "&tag=#{search}"
     end
 
-    response = JSON.parse(OpenURI.("https://api.giphy.com/v1/gifs/random#{params}"))
+    response = JSON.parse(OpenUri.("https://api.giphy.com/v1/gifs/random#{params}"))
 
     m.channel.notice("#{response['data']['image_mp4_url']}")
   end
