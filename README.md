@@ -60,3 +60,9 @@ Vice titles
 -----------
 
  * `!vice` generates a mock Vice magazine title
+
+Giphy
+-----
+
+ * `!giphy` display a random gif
+ * `!giphy tag` display a random gif with a specific tag
