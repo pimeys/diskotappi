@@ -7,12 +7,12 @@ build:
 	docker build -t diskotappi .
 
 run:
-	docker run -h irc.entropy.fi diskotappi
+	docker run -h irc.entropy.fi diskotappi:latest
 
 daemon:
-	docker run -d --restart unless-stopped -h irc.entropy.fi diskotappi
+	docker run -d --restart unless-stopped -h irc.entropy.fi diskotappi:latest
 
 update:
 	docker build -t diskotappi .
 	docker stop diskotappi
-	docker run -d --restart unless-stopped -h irc.entropy.fi diskotappi
+	docker run -d --restart unless-stopped -h irc.entropy.fi diskotappi:latest
