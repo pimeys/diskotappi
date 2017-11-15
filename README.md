@@ -44,6 +44,8 @@ Weather
  * `!w` returns the weather for London, Berlin and Helsinki
  * `!w place` returns the weather for the given place
 
+Special places: `kertsi`, `sompasauna`.
+
 Quote
 -----
 
