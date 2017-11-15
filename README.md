@@ -1,6 +1,11 @@
 Usage
 =====
 
+Help
+----
+
+ * `!help` returns a link to this page.
+
 Decisions
 ---------
 
