@@ -3,6 +3,7 @@ require 'uri'
 require 'json'
 require 'curb'
 require 'nokogiri'
+require 'ale_air'
 
 class Weather
   include Cinch::Plugin
@@ -21,6 +22,7 @@ class Weather
     return if (m.message =~ /\A!w/).nil?
 
     location = m.message.split('!w ').last
+    air_quality_location = m.message.include? " air "
 
     if location == '!w'
       threads = ["helsinki,fi", "berlin,de", "london,uk"].reduce({}) do |acc, city|
@@ -49,6 +51,14 @@ class Weather
       temp = fetch_kertsi
 
       m.channel.notice(temp['result'])
+
+    elsif air_quality_location
+      temp = m.message.split('!w air ').last
+      air_results = AleAir::FetchJSON.new(config['air_key'])
+      
+      return if !air_results.air_quality(temp)
+
+      m.channel.notice(air_results.irc_string)
     else
       weather = fetch_weather(location)
 
@@ -73,6 +83,9 @@ class Weather
   def fetch_sauna
     JSON.parse(OpenUri.("http://sompasauna.fi/lampotila/index.php/on/saunassa?format=json"))
   end
+
+  def fetch_air_quality(location)
+	
 
   def fetch_kertsi
     JSON.parse(OpenUri.("https://api.particle.io/v1/devices/380036001047343432313031/diskotappi?access_token=#{config['kertsi_key']}"))
