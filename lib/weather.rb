@@ -56,7 +56,8 @@ class Weather
       temp = m.message.split('!w air ').last
       air_results = AleAir::FetchJSON.new(config['air_key'])
       
-      return if !air_results.air_quality(temp)
+      air_results.air_quality(temp)
+      return if air_results.status != "ok"
 
       m.channel.notice(air_results.irc_string)
     
