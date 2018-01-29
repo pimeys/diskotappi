@@ -818,7 +818,7 @@ module ViceDict
     "A Member",
     "A Representative",
     "A Foe",
-    "An Ememy",
+    "An Enemy",
     "A Whistleblower"
   ].freeze
 
