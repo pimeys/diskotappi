@@ -8,3 +8,4 @@ lib/megahal/megahal.o
 lib/megahal/ruby-interface.o
 .bundle
 .capistrano
+config/weatherREAL.yml
