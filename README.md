@@ -46,7 +46,7 @@ If addressing the bot, it will answer back using the megahal AI.
 Weather
 -------
 
- * `!w` returns the weather for London, Berlin and Helsinki
+ * `!w` returns the weather for Amsterdam, Berlin and Helsinki
  * `!w place` returns the weather for the given place
  * `!w air place` returns the air quality for the given place
 

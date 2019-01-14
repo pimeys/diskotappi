@@ -25,7 +25,7 @@ class Weather
     air_quality_location = m.message.include? " air "
 
     if location == '!w'
-      threads = ["helsinki,fi", "berlin,de", "london,uk"].reduce({}) do |acc, city|
+      threads = ["helsinki,fi", "berlin,de", "amsterdam,nl"].reduce({}) do |acc, city|
         acc[city] = Thread.new { Thread.current[:weather] = fetch_weather(city) }
 
         acc
