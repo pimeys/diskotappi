@@ -2,7 +2,7 @@ FROM ruby:alpine
 MAINTAINER Julius de Bruijn <julius+entropy@nauk.io>
 
 RUN apk update && apk upgrade && apk --update add \
-    libstdc++ tzdata bash ca-certificates curl-dev gcc g++ make \
+    libstdc++ tzdata bash ca-certificates curl-dev gcc g++ make git \
     mariadb-dev musl-dev libffi-dev zlib-dev libxml2-dev automake \
     && echo 'gem: --no-document' > /etc/gemrc
 
