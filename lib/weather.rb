@@ -46,7 +46,7 @@ class Weather
       m.channel.notice(rendered.join(" > "))
     elsif location == 'sompasauna'
       temp = fetch_sauna
-      return m.channel.notice("Sompasauna, FI: data unvailable") unless temp
+      return m.channel.notice("Sompasauna, FI: data unavailable") unless temp
 
       m.channel.notice("Sompasauna, FI: temppeli: #{temp['temppeli']['temperature'].to_f}°C (päivitetty: #{temp['temppeli']['time']}) kappeli: #{temp['kappeli']['temperature'].to_f}°C (päivitetty: #{temp['kappeli']['time']})")
     elsif location == 'kertsi'
