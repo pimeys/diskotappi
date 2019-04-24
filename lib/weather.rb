@@ -4,6 +4,7 @@ require 'json'
 require 'curb'
 require 'nokogiri'
 require 'ale_air'
+require 'influxdb'
 
 class Weather
   include Cinch::Plugin
@@ -45,8 +46,9 @@ class Weather
       m.channel.notice(rendered.join(" > "))
     elsif location == 'sompasauna'
       temp = fetch_sauna
+      return m.channel.notice("Sompasauna, FI: data unavailable") unless temp
 
-      m.channel.notice("Sompasauna, FI: #{temp['value']}°C (päivitetty: #{temp['timestamp']})")
+      m.channel.notice("Sompasauna, FI: temppeli: #{temp['temppeli']['temperature'].to_f}°C (päivitetty: #{temp['temppeli']['time']}) kappeli: #{temp['kappeli']['temperature'].to_f}°C (päivitetty: #{temp['kappeli']['time']})")
     elsif location == 'kertsi'
       temp = fetch_kertsi
 
@@ -55,12 +57,12 @@ class Weather
     elsif air_quality_location
       temp = m.message.split('!w air ').last
       air_results = AleAir::FetchJSON.new(config['air_key'])
-      
+
       air_results.air_quality(temp)
       return if air_results.status != "ok"
 
       m.channel.notice(air_results.irc_string)
-    
+
     else
       weather = fetch_weather(location)
 
@@ -83,7 +85,9 @@ class Weather
   end
 
   def fetch_sauna
-    JSON.parse(OpenUri.("http://sompasauna.fi/lampotila/index.php/on/saunassa?format=json"))
+    influxdb.query('SELECT temperature FROM temppeli,kappeli ORDER BY DESC LIMIT 1').map { |x| { x['name'] => x['values'].first } }.inject(:merge)
+  rescue
+    nil
   end
 
   def fetch_kertsi
@@ -91,6 +95,10 @@ class Weather
   end
 
   protected
+
+  def influxdb
+    @influxdb ||= InfluxDB::Client.new(host: 'mittari.sompasauna.fi', username: 'ro', password: 'ro', database: 'sompis', port: 443, use_ssl: true)
+  end
 
   def config
     return @config if @config
