@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'cinch'
+require 'sequel'
 
 require './lib/bot_helper'
 require './lib/database'
@@ -32,7 +33,7 @@ class Quote
 
       m.channel.notice(text[:text]) if text
     else
-      text = dataset.select(:text).order { rand{} }.first
+      text = dataset.select(:text).order(Sequel.lit('RANDOM()')).first
 
       m.channel.notice(text[:text]) if text
     end
