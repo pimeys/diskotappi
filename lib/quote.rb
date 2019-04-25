@@ -33,7 +33,7 @@ class Quote
 
       m.channel.notice(text[:text]) if text
     else
-      text = dataset.select(:text).order(Sequel.lit('RANDOM()')).first
+      text = dataset.select(:text).order(Sequel.lit('RAND()')).first
 
       m.channel.notice(text[:text]) if text
     end
