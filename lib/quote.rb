@@ -29,7 +29,7 @@ class Quote
     elsif quote_mode(m.message) == :named_random
       search = m.message.split('!q ').last
       text   = dataset.select(:text).where(Sequel.like(:text, Regexp.new(search))).
-               order { rand{} }.first
+               order(Sequel.lit('RAND()')).first
 
       m.channel.notice(text[:text]) if text
     else
