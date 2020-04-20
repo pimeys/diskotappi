@@ -42,7 +42,8 @@ class Corona
   end
 
   def fetch_corona(country)
-    JSON.parse(OpenUri.("https://api.covid19api.com/live/country/#{country}/status/confirmed"))
+    #JSON.parse(OpenUri.("https://api.covid19api.com/live/country/#{country}/status/confirmed"))
+    JSON.parse(OpenUri.("https://api.covid19api.com/dayone/country/#{country}"))
   end
 
 end
