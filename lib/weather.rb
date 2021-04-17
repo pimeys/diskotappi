@@ -81,7 +81,7 @@ class Weather
   end
 
   def fetch_weather(location)
-    JSON.parse(OpenUri.("http://api.openweathermap.org/data/2.5/weather?q=#{location}&units=metric&appid=#{config['api_key']}"))
+    JSON.parse(OpenUri.("https://api.openweathermap.org/data/2.5/weather?q=#{location}&units=metric&appid=#{config['api_key']}"))
   end
 
   def fetch_sauna

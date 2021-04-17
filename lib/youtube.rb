@@ -12,6 +12,6 @@ class YouTube < OembedTitleFetcher
   end
 
   def oembed(uri)
-    "http://www.youtube.com/oembed?url=#{uri}"
+    "https://www.youtube.com/oembed?url=#{uri}"
   end
 end

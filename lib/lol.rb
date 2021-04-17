@@ -9,6 +9,6 @@ class Lol
   def listen(m)
     return if (m.message =~ /\A!:D/).nil?
 
-    m.channel.notice("http://giphy.com/gifs/tMyCJmeXHBetq/html5")
+    m.channel.notice("https://giphy.com/gifs/tMyCJmeXHBetq/html5")
   end
 end

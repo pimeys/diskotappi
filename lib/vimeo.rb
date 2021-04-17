@@ -12,6 +12,6 @@ class Vimeo < OembedTitleFetcher
   end
 
   def oembed(uri)
-    "http://vimeo.com/api/oembed.json?url=#{uri}"
+    "https://vimeo.com/api/oembed.json?url=#{uri}"
   end
 end

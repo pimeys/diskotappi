@@ -18,12 +18,12 @@ class GfyCat
 
     curl = Curl::Easy.new
     curl.useragent = "Ruby/#{RUBY_VERSION}"
-    curl.url = "http://upload.gfycat.com/transcode/#{rnd_string}?fetchUrl=#{uri}"
+    curl.url = "https://upload.gfycat.com/transcode/#{rnd_string}?fetchUrl=#{uri}"
 
     curl.http_get
 
     response = JSON.parse(curl.body_str)
-    gfy_uri  = "http://gfycat.com/#{response['gfyName']}"
+    gfy_uri  = "https://gfycat.com/#{response['gfyName']}"
     gfy_size = Filesize.from("#{response['webmSize']} B").pretty
     gif_size = Filesize.from("#{response['gifSize']} B").pretty
 

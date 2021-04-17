@@ -34,6 +34,6 @@ class RandomMixtape
   end
 
   def mixcloud_oembed(uri)
-    "http://www.mixcloud.com/oembed?format=json&url=#{uri}"
+    "https://www.mixcloud.com/oembed?format=json&url=#{uri}"
   end
 end
